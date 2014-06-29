@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filter Text Test</title>
+    <link rel="stylesheet" href="css/foundation.min.css">
+</head>
+<body>
+<input type="text" placeholder="Filters" id="filters">
+<textarea rows="4" placeholder="Document to Filter" id="documentText"></textarea>
+<textarea rows="4" placeholder="Results" id="result"></textarea>
+<button id="submit">Submit</button>
+<script src="filtertext.js"></script>
+<script>
+    document.getElementById('submit').addEventListener('click', function(){
+        var filters = document.getElementById('filters').value,
+            documentText = document.getElementById('documentText').value,
+            val = new filterText(filters, documentText);
+            document.getElementById('result').value = val.filteredText;
+    }, false);
+</script>
+</body>
+</html>
