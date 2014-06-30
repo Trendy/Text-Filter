@@ -5,10 +5,28 @@
     <link rel="stylesheet" href="css/foundation.min.css">
 </head>
 <body>
-<input type="text" placeholder="Filters" id="filters">
-<textarea rows="4" placeholder="Document to Filter" id="documentText"></textarea>
-<textarea rows="4" placeholder="Results" id="result"></textarea>
-<button id="submit">Submit</button>
+<div class="row">
+    <h1>Text Filter</h1>
+</div>
+<div class="row">
+    <textarea rows="4" placeholder="Document to Filter" id="documentText"></textarea>
+    <input type="text" placeholder="Filters" id="filters">
+    <textarea rows="4" placeholder="Results" id="result"></textarea>
+    <button id="submit">Submit</button>&nbsp;<button id="reset">Reset</button>
+</div>
+<div class="row">
+<h2>Instructions</h2>
+    <ol>
+        <li>Enter the document text you'd like to filter.</li>
+        <li>Enter keywords or phrases to be filtered. Separate entries by comma or spaces. Pharses should be enclosed in quotation marks.</li>
+        <li>Press 'Submit'</li>
+    </ol>
+</div>
+<div class="row">
+<p>
+    This is regular expression based and may contain errors. <a href="https://github.com/Trendy/Text-Filter">Check out the source on GitHub</a>!
+</p>
+</div>
 <script src="filtertext.js"></script>
 <script>
     document.getElementById('submit').addEventListener('click', function(){
@@ -16,6 +34,12 @@
             documentText = document.getElementById('documentText').value,
             val = new filterText(filters, documentText);
             document.getElementById('result').value = val.filteredText;
+    }, false);
+
+    document.getElementById('reset').addEventListener('click', function(){
+        document.getElementById('filters').value = "",
+        document.getElementById('documentText').value = "",
+        document.getElementById('result').value = "";
     }, false);
 </script>
 </body>
