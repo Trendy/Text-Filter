@@ -11,6 +11,7 @@
 <div class="row">
     <textarea rows="4" placeholder="Document to Filter" id="documentText"></textarea>
     <input type="text" placeholder="Filters" id="filters">
+    <input type="text" placeholder="(Optional)Replace filters with?" id="filterSymbol">
     <textarea rows="4" placeholder="Results" id="result"></textarea>
     <button id="submit">Submit</button>&nbsp;<button id="reset">Reset</button>
 </div>
@@ -19,6 +20,7 @@
     <ol>
         <li>Enter the document text you'd like to filter.</li>
         <li>Enter keywords or phrases to be filtered. Separate entries by comma or spaces. Pharses should be enclosed in quotation marks.</li>
+        <li>(optional step) - Enter a symbol or phrase to replace each keyword/phrase with.
         <li>Press 'Submit'</li>
     </ol>
 </div>
@@ -32,7 +34,11 @@
     document.getElementById('submit').addEventListener('click', function(){
         var filters = document.getElementById('filters').value,
             documentText = document.getElementById('documentText').value,
-            val = new filterText(filters, documentText);
+            filterSymbol = document.getElementById('filterSymbol').value;
+        if(filterSymbol === ""){
+            filterSymbol = "####";
+        }
+        var val = new filterText(filters, documentText, filterSymbol);
             document.getElementById('result').value = val.filteredText;
     }, false);
 
