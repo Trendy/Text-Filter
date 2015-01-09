@@ -29,7 +29,7 @@
     This is regular expression based and may contain errors. <a href="https://github.com/Trendy/Text-Filter">Check out the source on GitHub</a>!
 </p>
 </div>
-<script src="filtertext.js"></script>
+<script src="textFilter.js"></script>
 <script>
     document.getElementById('submit').addEventListener('click', function(){
         var filters = document.getElementById('filters').value,
@@ -38,7 +38,7 @@
         if(filterSymbol === ""){
             filterSymbol = "####";
         }
-        var val = new filterText(filters, documentText, filterSymbol);
+        var val = new textFilter(filters, documentText, filterSymbol);
             document.getElementById('result').value = val.filteredText;
     }, false);
 
